@@ -10,13 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a67a035e-d44e-4872-99c5-1e256cc30a4f" name="Default Changelist" comment="Pocetak izrade projekta iz Node-a.">
+    <list default="true" id="a67a035e-d44e-4872-99c5-1e256cc30a4f" name="Default Changelist" comment="Projekat povezan sa bazom, uradjene CRUD operacije i validacija za njih">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/voce.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/voce.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +34,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.14.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -56,7 +53,9 @@
       <option name="presentableId" value="Default" />
       <updated>1611539253173</updated>
       <workItem from="1611539254291" duration="1457000" />
-      <workItem from="1611578605941" duration="7075000" />
+      <workItem from="1611578605941" duration="10735000" />
+      <workItem from="1611674664054" duration="602000" />
+      <workItem from="1611912651398" duration="409000" />
     </task>
     <task id="LOCAL-00001" summary="Pocetak izrade projekta iz Node-a.">
       <created>1611540237727</created>
@@ -93,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611578897280</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Projekat povezan sa bazom, uradjene CRUD operacije i validacija za njih">
+      <created>1611591881996</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611591881996</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,17 +119,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Pocetak izrade projekta iz Node-a." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pocetak izrade projekta iz Node-a." />
+    <MESSAGE value="Projekat povezan sa bazom, uradjene CRUD operacije i validacija za njih" />
+    <option name="LAST_COMMIT_MESSAGE" value="Projekat povezan sa bazom, uradjene CRUD operacije i validacija za njih" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1611539467285">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="279" key="FileChooserDialogImpl/-1920.134.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1611539467285" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1611578911798">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1611591932663">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/-1920.134.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1611578911798" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/-1920.134.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1611591932663" />
     <state x="761" y="431" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1611540360987">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

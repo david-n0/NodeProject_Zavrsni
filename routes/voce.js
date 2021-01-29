@@ -5,11 +5,11 @@ const sqlite3 = require('sqlite3').verbose();
 const route = express.Router();
 route.use(express.json());
 
-let db = new sqlite3.Database('D:\\Fakultet\\III Godina\\SKRIPT JEZIK\\ZavrsniProjekat_Django\\DjangoProjekat\\db.sqlite3.db', (err) => {
+let db = new sqlite3.Database('D:\\Fakultet\\III Godina\\SKRIPT JEZIK\\ZavrsniProjekat_Django\\DjangoProjekat\\db.sqlite3', (err) => {
     if (err) {
         return console.error(err.message);
     }
-    console.log('Connected to the in-memory SQlite database.');
+    console.log('Connected to the local SQlite database.');
 });
 
 
@@ -17,6 +17,7 @@ const schemaMalina = Joi.object().keys({
     idMalina: Joi.number().allow(),
     vrsta: Joi.string().max(100).required(),
     cenaPoKg: Joi.number().max(99999).required()
+
 
 });
 
@@ -28,7 +29,7 @@ const schemaKupina = Joi.object().keys({
 
 
 route.get('/malina/all', (req, res) => {
-    let query = 'select * from Malina'
+    let query = 'select * from zamrznutoVoce_malina'
     let params = []
     db.serialize(function () {
         db.all(query, function (err, rows) {
@@ -47,15 +48,14 @@ route.get('/malina/all', (req, res) => {
 route.post('/malina/add', (req, res) => {
     let data = {
         vrsta: req.body.vrsta,
-        cenaPoKg: req.body.cenaPoKg,
-        klasa: req.body.klasa
+        cenaPoKg: req.body.cenaPoKg
     }
     let {error} = schemaMalina.validate(data);
     if (error)
         res.send("Error encountered while validating values");
     else {
         db.serialize(() => {
-            db.run('INSERT INTO Malina( vrsta, cenaPoKg, klasa) VALUES(?,?,?)', [data.vrsta, data.cenaPoKg, data.klasa], function (err) {
+            db.run('INSERT INTO zamrznutoVoce_malina( vrsta, cenaPoKg, klasa_id) VALUES(?,?,?)', [data.vrsta, data.cenaPoKg, req.body.klasa], function (err) {
                 if (err) {
                     return console.log(err.message);
                 }
@@ -81,7 +81,7 @@ route.post('/malina/update/:id', (req, res) => {
         res.send("Error encountered while validating values");
     else {
         db.serialize(() => {
-            db.run('UPDATE Malina SET vrsta = ?, cenaPoKg = ?, klasa = ? WHERE id = ?', [data.vrsta, data.cenaPoKg, data.klasa, req.params.id], function (err) {
+            db.run('UPDATE zamrznutoVoce_malina SET vrsta = ?, cenaPoKg = ?, klasa = ? WHERE id = ?', [data.vrsta, data.cenaPoKg, data.klasa, req.params.id], function (err) {
                 if (err) {
                     res.send("Error encountered while updating");
                     return console.error(err.message);
@@ -102,7 +102,7 @@ route.post('/malina/update/:id', (req, res) => {
 route.delete('/malina/delete/:id', (req, res) => {
 
     db.serialize(() => {
-        db.run('DELETE FROM Malina WHERE id = ?', req.params.id, function (err) {
+        db.run('DELETE FROM zamrznutoVoce_malina WHERE id = ?', req.params.id, function (err) {
             if (err) {
                 res.send("Error encountered while deleting");
                 return console.error(err.message);
@@ -115,7 +115,7 @@ route.delete('/malina/delete/:id', (req, res) => {
 });
 
 route.get('/kupina/all', (req, res) => {
-    let query = 'select * from Kupina'
+    let query = 'select * from zamrznutoVoce_kupina'
     let params = []
     db.serialize(function () {
         db.all(query, function (err, rows) {
@@ -142,7 +142,7 @@ route.post('/kupina/add', (req, res) => {
         res.send("Error encountered while validating values");
     else {
         db.serialize(() => {
-            db.run('INSERT INTO Kupina( vrsta, cenaPoKg, klasa) VALUES(?,?,?)', [data.vrsta, data.cenaPoKg, data.klasa], function (err) {
+            db.run('INSERT INTO zamrznutoVoce_kupina( vrsta, cenaPoKg, klasa) VALUES(?,?,?)', [data.vrsta, data.cenaPoKg, data.klasa], function (err) {
                 if (err) {
                     return console.log(err.message);
                 }
@@ -168,7 +168,7 @@ route.post('/kupina/update/:id', (req, res) => {
         res.send("Error encountered while validating values");
     else {
         db.serialize(() => {
-            db.run('UPDATE Kupina SET vrsta = ?, cenaPoKg = ?, klasa = ? WHERE id = ?', [data.vrsta, data.cenaPoKg, data.klasa, req.params.id], function (err) {
+            db.run('UPDATE zamrznutoVoce_kupina SET vrsta = ?, cenaPoKg = ?, klasa = ? WHERE id = ?', [data.vrsta, data.cenaPoKg, data.klasa, req.params.id], function (err) {
                 if (err) {
                     res.send("Error encountered while updating");
                     return console.error(err.message);
@@ -189,7 +189,7 @@ route.post('/kupina/update/:id', (req, res) => {
 route.delete('/kupina/delete/:id', (req, res) => {
 
     db.serialize(() => {
-        db.run('DELETE FROM Kupina WHERE id = ?', req.params.id, function (err) {
+        db.run('DELETE FROM zamrznutoVoce_kupina WHERE id = ?', req.params.id, function (err) {
             if (err) {
                 res.send("Error encountered while deleting");
                 return console.error(err.message);
